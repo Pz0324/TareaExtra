@@ -22,7 +22,7 @@ public class JwtUtils {
                     .setSubject(email)
                     .claim("id", userId.toString())
                     .setIssuedAt(new Date())
-                    .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10h
+                    .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
                     .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
                     .compact();
         }
@@ -41,7 +41,7 @@ public class JwtUtils {
                 return true;
             } catch (DecodingException e) {
                 System.err.println("Error de decodificación: " + e.getMessage());
-                System.err.println("Token recibido: " + token); // Debug
+                System.err.println("Token recibido: " + token);
             } catch (JwtException e) {
                 System.err.println("Error JWT: " + e.getMessage());
             }
